@@ -1,4 +1,3 @@
-const https = require("https");
 const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
@@ -18,7 +17,6 @@ const credentials = {
 
 
 const app = express();
-var httpsServer = https.createServer(credentials, app);
 
 app.use(helmet());
 
@@ -31,4 +29,4 @@ app.get('/', (req, res) => {
 require('./routes/authRoutes')(app);
 require('./routes/uploadRoutes')(app);
 
-httpsServer.listen(5000);
+app.listen(5000);
